@@ -12,5 +12,5 @@ POST {{baseUrl}}/api/posts
 Content-Type: application/json
 
 {
-    "title": "An amazing post",
+    "title": "An amazing post"
 }

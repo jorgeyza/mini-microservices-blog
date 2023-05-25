@@ -27,7 +27,7 @@ fastify.get("/api/posts", {
   },
 });
 
-fastify.get("/api/posts", {
+fastify.post("/api/posts", {
   handler: (
     request: FastifyRequest<{
       Body: Omit<Post, "id">;

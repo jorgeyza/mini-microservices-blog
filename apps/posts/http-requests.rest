@@ -1,0 +1,16 @@
+@hostname = http://0.0.0.0
+@port = 4000
+@baseUrl = {{hostname}}:{{port}}
+
+###
+
+GET {{baseUrl}}/api/posts
+
+###
+
+POST {{baseUrl}}/api/posts
+Content-Type: application/json
+
+{
+    "title": "An amazing post",
+}

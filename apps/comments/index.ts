@@ -1,4 +1,14 @@
-import Fastify from "fastify";
+import { randomBytes } from "crypto";
+import Fastify, { FastifyReply, FastifyRequest } from "fastify";
+
+interface Comment {
+  id: string;
+  content: string;
+}
+
+interface Comments {
+  [postId: string]: Comment[];
+}
 
 const fastify = Fastify({
   logger: {
@@ -8,10 +18,35 @@ const fastify = Fastify({
   },
 });
 
+const commentsByPostId: Comments = {};
+
+fastify.get("/api/posts/:id/comments", {
+  handler: (request: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) => {
+    return reply.code(200).send(commentsByPostId[request.params.id]);
+  },
+});
+
+fastify.post("/api/posts/:id/comments", {
+  handler: (
+    request: FastifyRequest<{ Body: Omit<Comment, "id">; Params: { id: string } }>,
+    reply: FastifyReply
+  ) => {
+    const commentId = randomBytes(4).toString("hex");
+    const { content } = request.body;
+
+    const comments = commentsByPostId[request.params.id] ?? [];
+    comments.push({ id: commentId, content });
+
+    commentsByPostId[request.params.id] = comments;
+
+    reply.code(201).send(comments);
+  },
+});
+
 async function main() {
   try {
     await fastify.listen({
-      port: Number(process.env.PORT),
+      port: 4001,
       host: "0.0.0.0",
     });
   } catch (error) {

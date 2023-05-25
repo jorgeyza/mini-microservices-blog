@@ -1,0 +1,17 @@
+@hostname = http://0.0.0.0
+@port = 4001
+@baseUrl = {{hostname}}:{{port}}
+@id = e4bd82da
+
+###
+
+GET {{baseUrl}}/api/posts/{{id}}/comments
+
+###
+
+POST {{baseUrl}}/api/posts/{{id}}/comments
+Content-Type: application/json
+
+{
+    "title": "A nice comment"
+}

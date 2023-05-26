@@ -7,7 +7,7 @@ export const siteConfig = {
   mainNav: [
     {
       title: "Portfolio",
-      href: "/",
+      href: "https://jorgeyza.com/",
     },
   ],
   links: {

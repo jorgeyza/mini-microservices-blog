@@ -1,6 +1,4 @@
-import Link from "next/link"
-
-import { buttonVariants } from "~/components/ui/button"
+import { PostCreate } from "~/components/post-create"
 
 export default function IndexPage() {
   return (
@@ -13,21 +11,7 @@ export default function IndexPage() {
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
           Create a post <br className="hidden sm:inline" />
         </h1>
-        <form>
-          <p className="text-muted-foreground max-w-[700px] text-lg sm:text-xl">
-            Title
-          </p>
-        </form>
-      </div>
-      <div className="flex gap-4">
-        <Link
-          href={"#"}
-          target="_blank"
-          rel="noreferrer"
-          className={buttonVariants({ size: "lg" })}
-        >
-          Submit
-        </Link>
+        <PostCreate />
       </div>
     </section>
   )

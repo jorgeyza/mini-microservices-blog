@@ -1,5 +1,6 @@
 import { randomBytes } from "crypto";
 import Fastify, { FastifyReply, FastifyRequest } from "fastify";
+import cors from "@fastify/cors";
 
 interface Comment {
   id: string;
@@ -16,6 +17,10 @@ const fastify = Fastify({
       target: "pino-pretty",
     },
   },
+});
+
+await fastify.register(cors, {
+  origin: "http://localhost:3000",
 });
 
 const commentsByPostId: Comments = {};

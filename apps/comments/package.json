@@ -2,7 +2,8 @@
   "name": "comments",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch index.ts"
   },
@@ -10,14 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^8.3.0",
     "fastify": "^4.17.0"
   },
   "devDependencies": {
     "@types/node": "^20.2.3",
-    "pino-pretty": "^10.0.0",
-    "tsx": "^3.12.7",
-    "typescript": "^5.0.4",
     "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*"
+    "pino-pretty": "^10.0.0",
+    "tsconfig": "workspace:*",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4"
   }
 }

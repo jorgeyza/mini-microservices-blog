@@ -1,5 +1,6 @@
 import { randomBytes } from "crypto";
 import Fastify, { FastifyRequest, FastifyReply } from "fastify";
+import cors from "@fastify/cors";
 
 interface Post {
   id: string;
@@ -16,6 +17,10 @@ const fastify = Fastify({
       target: "pino-pretty",
     },
   },
+});
+
+await fastify.register(cors, {
+  origin: "http://localhost:3000",
 });
 
 // No db, all posts will be in memory.

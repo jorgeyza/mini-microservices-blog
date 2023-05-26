@@ -27,6 +27,7 @@ export function MainNav({ items }: MainNavProps) {
                 <Link
                   key={index}
                   href={item.href}
+                  target="_blank"
                   className={cn(
                     "text-muted-foreground flex items-center text-lg font-semibold sm:text-sm",
                     item.disabled && "cursor-not-allowed opacity-80"
